@@ -8,6 +8,7 @@ import java.sql.*;
 
 class FormWithDBAccess extends JFrame implements ActionListener {
     JButton button;
+    JButton clearButton;
     JTextField id;
     JTextField name;
     JTextField address;
@@ -21,6 +22,7 @@ class FormWithDBAccess extends JFrame implements ActionListener {
 //        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
         JLabel idLabel = new JLabel("Id: ");
         id =  new JTextField(20);
 
@@ -39,6 +41,9 @@ class FormWithDBAccess extends JFrame implements ActionListener {
         button = new JButton("Ok");
         button.addActionListener(this);
 
+        clearButton = new JButton("Clear");
+        clearButton.addActionListener(this);
+
         this.add(idLabel);
         this.add(id);
 
@@ -55,26 +60,34 @@ class FormWithDBAccess extends JFrame implements ActionListener {
         this.add(salary);
 
         this.add(button);
+        this.add(clearButton);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == button) {
             try {
-                String empId = id.getText();
+                int empId = Integer.parseInt(id.getText());
                 String empName = name.getText();
-                String empAddress = name.getText();
-                String empDepartment = name.getText();
+                String empAddress = address.getText();
+                String empDepartment = department.getText();
                 int empSalary = Integer.parseInt(salary.getText());
 
-                Class.forName("com.mysql.jdbc.Driver");
+//                Class.forName("com.mysql.jdbc.Driver");
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_emp", "root", "nice");
-                Statement statement = connection.createStatement();
-                String query = "INSERT INTO employee(id, name, address, department, salary) VALUES('"+ empId +"', '"+ empName +"', '"+ empAddress +"', '"+ empDepartment +"', '"+ empSalary +"'')";
-                statement.executeUpdate(query);
-                System.out.println("Successfully into db table!");
+                String query = "INSERT INTO employee(id, name, address, department, salary) VALUES(?, ?, ?, ?, ?)";
+                PreparedStatement statement = connection.prepareStatement(query);
+
+                statement.setInt(1, empId);
+                statement.setString(2, empName);
+                statement.setString(3, empAddress);
+                statement.setString(4, empDepartment);
+                statement.setInt(5, empSalary);
+                statement.executeUpdate();
 
                 connection.close();
+                System.out.println("Data successfully inserted into the db table!");
+
             } catch (SQLException se) {
                 se.printStackTrace();
             }
@@ -83,10 +96,16 @@ class FormWithDBAccess extends JFrame implements ActionListener {
             }
         }
 
+        if(e.getSource() == clearButton) {
+            id.setText("");
+            name.setText("");
+            address.setText("");
+            department.setText("");
+            salary.setText("");
+        }
     }
 
     public static void main(String[] args) {
         new FormWithDBAccess();
     }
 }
-

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	 version="4.0">
+    
+        <!--servlet declaration-->
+    <servlet>
+        <servlet-name>first</servlet-name>
+        <servlet-class>com.servlets.FirstServlet</servlet-class>
+    </servlet>
+    
+    
+    <servlet>
+        <servlet-name>second</servlet-name>
+        <servlet-class>com.servlets.SecondServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>third</servlet-name>
+        <servlet-class>com.servlets.ThirdServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>com.servlets.RegisterServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ReadParams</servlet-name>
+        <servlet-class>com.servlets.ReadParams</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CookieSetServlet</servlet-name>
+        <servlet-class>com.servlets.CookieSetServlet</servlet-class>
+    </servlet>
+    
+        <servlet>
+        <servlet-name>CookieReadServlet</servlet-name>
+        <servlet-class>com.servlets.CookieReadServlet</servlet-class>
+    </servlet>
+    
+    
+    <servlet>
+        <servlet-name>Validate</servlet-name>
+        <servlet-class>com.servlets.Validate</servlet-class>
+    </servlet>
+    
+        <servlet>
+        <servlet-name>Welcome</servlet-name>
+        <servlet-class>com.servlets.Welcome</servlet-class>
+    </servlet>
+    
+    
+    <servlet>
+        <servlet-name>DBaccess</servlet-name>
+        <servlet-class>com.servlets.DBaccess</servlet-class>
+    </servlet>
+    
+    
+    
+    
+        <!--mapping-->
+    <servlet-mapping>
+        <servlet-name>first</servlet-name>
+        <url-pattern>/web</url-pattern>
+    </servlet-mapping>
+    
+        
+    <servlet-mapping>
+        <servlet-name>second</servlet-name>
+        <url-pattern>/web2</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>third</servlet-name>
+        <url-pattern>/web3</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ReadParams</servlet-name>
+        <url-pattern>/ReadParams</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet-mapping>
+        <servlet-name>CookieSetServlet</servlet-name>
+        <url-pattern>/CookieSetServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CookieReadServlet</servlet-name>
+        <url-pattern>/CookieReadServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Validate</servlet-name>
+        <url-pattern>/Validate</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern>/Welcome</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>DBaccess</servlet-name>
+        <url-pattern>/DBaccess</url-pattern>
+    </servlet-mapping>
+       
+    
+    
+    
+    
+    
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
